@@ -4,14 +4,14 @@ import { Link as RadixLink } from "@radix-ui/themes";
 
 interface Props {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Link = ({ href, children }: Props) => {
   return (
-    <NextLink href={href} passHref legacyBehavior>
-      <RadixLink asChild>
-        <a>{children}</a>
+    <NextLink href={href} passHref>
+      <RadixLink asChild className="hover:underline">
+        <span>{children}</span>
       </RadixLink>
     </NextLink>
   );

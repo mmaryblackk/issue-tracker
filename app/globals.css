@@ -1,6 +1,6 @@
 @import "tailwindcss/base";
-@plugin "@tailwindcss/typography";
 @import "@radix-ui/themes/styles.css";
+@plugin "@tailwindcss/typography";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
