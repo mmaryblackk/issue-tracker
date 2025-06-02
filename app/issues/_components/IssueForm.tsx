@@ -7,19 +7,15 @@ import { Issue } from "@prisma/client";
 import { Button, Callout, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import SimpleMDE from "react-simplemde-editor";
 import { z } from "zod";
 
 type IssueFormData = z.infer<typeof issueSchema>;
 
-const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
-  ssr: false,
-});
-
-const IssueFrom = ({ issue }: { issue?: Issue }) => {
+const IssueForm = ({ issue }: { issue?: Issue }) => {
   const router = useRouter();
   const {
     register,
@@ -40,7 +36,8 @@ const IssueFrom = ({ issue }: { issue?: Issue }) => {
       } else {
         await axios.post("/api/issues", data);
       }
-      router.push("/issues");
+      router.push("/issues/list");
+      router.refresh();
     } catch (error) {
       setSubmitting(false);
       setError("An error occured");
@@ -79,4 +76,4 @@ const IssueFrom = ({ issue }: { issue?: Issue }) => {
   );
 };
 
-export default IssueFrom;
+export default IssueForm;

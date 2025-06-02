@@ -1,7 +1,6 @@
-import React from "react";
-import IssueForm from "../../_components/IssueForm";
 import { prisma } from "@/prisma/client";
 import { notFound } from "next/navigation";
+import ClientIssueForm from "../../_components/ClientIssueForm";
 
 export type paramsType = Promise<{ id: string }>;
 
@@ -15,7 +14,7 @@ const EditIssuePage = async (props: { params: paramsType }) => {
 
   if (!issue) notFound();
 
-  return <IssueForm issue={issue} />;
+  return <ClientIssueForm issue={issue} />;
 };
 
 export default EditIssuePage;
