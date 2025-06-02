@@ -4,12 +4,10 @@ import { notFound } from "next/navigation";
 import EditIssueButton from "./EditIssueButton";
 import IssueDetails from "./IssueDetails";
 
-type Props = {
-  params: { id: string };
-};
+export type paramsType = Promise<{ id: string }>;
 
-const IssueDetailPage = async ({ params }: Props) => {
-  const { id } = await params;
+const IssueDetailPage = async (props: { params: paramsType }) => {
+  const { id } = await props.params;
 
   if (isNaN(Number(id))) notFound();
 
