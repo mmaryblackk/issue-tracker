@@ -4,7 +4,7 @@ import Link from "next/link";
 const IssueActions = () => {
   return (
     <div className="mb-5">
-      <Button>
+      <Button className="!cursor-pointer">
         <Link href="/issues/new">New Issue</Link>
       </Button>
     </div>
