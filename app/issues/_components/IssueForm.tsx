@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import SimpleMDE from "react-simplemde-editor";
 import { z } from "zod";
+import EditStatus from "../edit/[id]/EditStatus";
 
 type IssueFormData = z.infer<typeof issueSchema>;
 
@@ -67,6 +68,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
           )}
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
+        {issue && <EditStatus issue={issue} />}
         <Button className="hover:cursor-pointer" disabled={isSubmitting}>
           {issue ? "Update Issue" : "Submit New Issue"}{" "}
           {isSubmitting && <Spinner />}
