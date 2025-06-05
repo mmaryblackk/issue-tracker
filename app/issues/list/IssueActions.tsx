@@ -1,22 +1,19 @@
+"use client";
+
 import { Button, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import IssueStatusFilter from "./IssueStatusFilter";
 import { Link as CustomLink } from "@/app/components";
-import { IssueQuery } from "./IssueTable";
+import { useSearchParams } from "next/navigation";
 
-type Props = {
-  searchParams: IssueQuery;
-};
-
-const IssueActions = async ({ searchParams }: Props) => {
-  const { status, orderBy, page } = await searchParams;
-  const areSearchParams = status || orderBy || page;
-
+const IssueActions = () => {
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams);
   return (
     <Flex justify="between">
       <Flex gap="3" align="center">
         <IssueStatusFilter />
-        {areSearchParams && (
+        {params.size > 0 && (
           <CustomLink href="/issues/list">
             <Text size="2" color="gray">
               Clear filters
