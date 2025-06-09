@@ -5,18 +5,18 @@ import { Flex, Table } from "@radix-ui/themes";
 import NextLink from "next/link";
 
 export type IssueQuery = {
-  status: Status;
-  orderBy: keyof Issue;
-  page: string;
+  status?: Status;
+  orderBy?: keyof Issue;
+  page?: string;
 };
 
 type Props = {
-  searchParams: IssueQuery;
+  searchParams?: IssueQuery;
   issues: Issue[];
 };
 
 const IssueTable = async ({ searchParams, issues }: Props) => {
-  const { status, orderBy } = await searchParams;
+  const { status, orderBy } = (await searchParams) ?? {};
 
   return (
     <Table.Root variant="surface">
