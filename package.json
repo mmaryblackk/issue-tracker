@@ -45,6 +45,7 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
+    "@sentry/cli": "^2.46.0",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^22.15.24"
   }
